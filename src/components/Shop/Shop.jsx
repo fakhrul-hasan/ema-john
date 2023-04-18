@@ -20,6 +20,10 @@ const Shop = () => {
         setCart(newCart);
         addToDb(product.id);
     }
+    const handleClearCart = () => {
+        setCart([]);
+        deleteShoppingCart();
+      };
     useEffect(() => {
         const storedCart = getShoppingCart();
         console.log(storedCart);
@@ -47,7 +51,7 @@ const Shop = () => {
                 }
             </div>
             <div className='cart-container'>
-                <Cart cart={cart}>
+                <Cart cart={cart} handleClearCart={handleClearCart}>
                     <Link className='btn-link' to='/orders'>
                         <button className='btn-proceed'>
                             <span>Review Order</span>
